@@ -1,0 +1,12 @@
+
+{% for usuarios in usuarios %}
+
+	{{ usuarios.username }} {{ usuarios.email }} {{ usuarios.id }}
+
+	<a href={% url 'Eliminar_Usuarios' usuarios.pk %}>Borrar</a>
+	<a href={% url 'Editar_Usuario' %}>Editar</a>
+	
+	<br>
+	
+	{% endfor %}
+
