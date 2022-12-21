@@ -4,7 +4,7 @@
 	{{ usuarios.username }} {{ usuarios.email }} {{ usuarios.id }}
 
 	<a href={% url 'Eliminar_Usuarios' usuarios.pk %}>Borrar</a>
-	<a href={% url 'Editar_Usuario' %}>Editar</a>
+	<a href={% url 'Editar_Usuario' usuarios.id %}>Editar</a>
 	
 	<br>
 	

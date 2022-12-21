@@ -84,9 +84,8 @@ def eliminarUsuario(request, pk):
 
 #-------------- editar Usuario ------------- 
 
-def editarUsuario(request):
-
-    usuario = request.user
+def editarUsuario(request, id):
+    usuario = User.objects.get(id=id)
 
     if request.method == 'POST':
         formulario = UserEditForm(request.POST)
@@ -100,8 +99,7 @@ def editarUsuario(request):
 
             usuario.save()
             return render(request, "usuarios_registrados.html")
-        else:
-            return render(request, "editar_perfil.html", {"Formulario": formulario, "usuario": usuario, "mensaje": "error al editar el perfil"})
     else:
-        formulario = UserEditForm(initial={'email': usuario.email})
-    return render(request, "editar_perfil.html", {"Formulario": formulario, "usuario": usuario})
+        formulario = UserEditForm(initial={"username":usuario.username, "email":usuario.email, "password1":usuario.password1, "password2":usuario.password2})
+    return render(request, "editar_perfil.html", {"Formulario": formulario})
+
